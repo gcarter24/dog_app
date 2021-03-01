@@ -11,7 +11,7 @@ class Api::DogsController < ApplicationController
       breed: params[:breed],
       size: params[:size],
     )
-    #@dog.save
+    @dog.save
     render "show.json.jb"
   end
 
