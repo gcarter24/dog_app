@@ -14,4 +14,9 @@ class Api::DogsController < ApplicationController
     #@dog.save
     render "show.json.jb"
   end
+
+  def show
+    @dog = Dog.find_by(id: params[:id])
+    render "show.json.jb"
+  end
 end
