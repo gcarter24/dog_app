@@ -1,9 +1,9 @@
 @dogs.map do |dog|
-{
-   id: dog.id,
-  name: dog.name,
-  age: dog.age,
-  breed: dog.breed,
-  size: dog.size
-}
+  {
+    id: dog.id,
+    name: dog.name,
+    age: dog.age,
+    breed: dog.breed,
+    size: dog.size
+  }
 end 

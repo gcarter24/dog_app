@@ -11,8 +11,11 @@ class Api::DogsController < ApplicationController
       breed: params[:breed],
       size: params[:size],
     )
-    @dog.save
-    render "show.json.jb"
+    if @dog.save
+      render "show.json.jb"
+    else
+      render json: { errors: errors.full_messages }
+    end
   end
 
   def show
@@ -26,13 +29,16 @@ class Api::DogsController < ApplicationController
     @dog.age = params[:age] || @dog.age
     @dog.breed = params[:breed] || @dog.breed
     @dog.size = params[:size] || @dog.size
-    #@dog.save
-    render "show.json.jb"
+    if @dog.save
+      render "show.json.jb"
+    else
+      render json: { errors: errors.full_messages }
+    end
   end
 
   def destroy
     @dog = Dog.find_by(id: params[:id])
-    #@dog.destroy
-    render json: { message: "you have deleted item successfully" }
+    @dog.destroy
+    render json: { message: "Dog was succesfully removed" }
   end
 end
